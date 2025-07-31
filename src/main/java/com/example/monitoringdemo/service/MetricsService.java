@@ -36,11 +36,11 @@ public class MetricsService {
         // Create custom gauges
         Gauge.builder("active.users")
                 .description("Number of active users")
-                .register(meterRegistry, activeUsers, AtomicInteger::get);
+                .register(meterRegistry, activeUsers, AtomicInteger::doubleValue);
 
         Gauge.builder("total.order.value")
                 .description("Total value of all orders")
-                .register(meterRegistry, totalOrderValue, AtomicLong::get);
+                .register(meterRegistry, totalOrderValue, AtomicLong::doubleValue);
     }
 
     public void incrementErrorCounter(String errorType) {
