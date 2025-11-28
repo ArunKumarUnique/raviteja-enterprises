@@ -1,24 +1,70 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Node.js/JavaScript-related
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+dist/
+build/
+.eslintcache
+.next/
+public/
+*.tgz
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS-related files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# IDE-related files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Java build artifacts (for Java, Kotlin, or other JVM-based languages)
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Python-related
+*.pyc
+*.pyo
+__pycache__/
+
+# Mac-specific files
+.AppleDouble
+.LSOverride
+
+# JetBrains (IDE) files
+.idea/
+
+# Temporary files
+*.log
+*.bak
+*.swp
+*.swo
+*.swn
+
+# Log files
+*.log
+
+# Environment variables or secret files
+.env
+.env.local
+.env.development
+.env.production
+
+# Compiled code or binary files
+*.exe
+*.dll
+*.so
+*.dmg
+*.iso
+
+# Other custom build folders
+coverage/
+*.out
+
+# System-related files
+Desktop.ini
