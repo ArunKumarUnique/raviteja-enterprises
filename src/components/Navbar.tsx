@@ -49,9 +49,9 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <img 
-              src="/re-pic-Picsart-AiImageEnhancer.jfif" 
+              src="/Adobe_Express_-_file.png" 
               alt="Raviteja Enterprises Logo" 
-              className="h-10 w-10 rounded-lg object-cover mr-3 shadow-sm"
+              className="h-12 w-12 object-contain mr-3"
             />
             <div className="text-2xl font-bold text-blue-900">
               Raviteja Enterprises
