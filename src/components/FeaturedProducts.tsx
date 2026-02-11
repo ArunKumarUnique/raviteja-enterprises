@@ -16,7 +16,8 @@ const FeaturedProducts: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Check out our most popular and recommended products
+            Discover our handpicked selection of premium products, chosen for their 
+            exceptional quality and customer satisfaction
           </p>
         </div>
 
