@@ -32,7 +32,8 @@ const CategoryGrid: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore our wide range of electronics and home essentials
+            Discover our comprehensive collection of quality electronics and home essentials, 
+            carefully selected to meet all your household needs
           </p>
         </div>
 

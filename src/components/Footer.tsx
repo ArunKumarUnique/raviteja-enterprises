@@ -9,9 +9,9 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center mb-4">
               <img 
-                src="/re-pic-Picsart-AiImageEnhancer.jfif" 
+                src="/Adobe_Express_-_file.png" 
                 alt="Raviteja Enterprises Logo" 
-                className="h-8 w-8 rounded object-cover mr-3"
+                className="h-10 w-10 object-contain mr-3"
               />
               <h3 className="text-xl font-bold">Raviteja Enterprises</h3>
             </div>
