@@ -7,6 +7,7 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import CategoryPage from './pages/CategoryPage';
 import Footer from './components/Footer';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </main>
           <Footer />
         </div>
+        <Analytics />
       </Router>
     </AppProvider>
   );
