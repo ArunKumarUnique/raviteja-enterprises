@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Eye, Edit, Trash2, Star } from 'lucide-react';
+import { ShoppingCart, Eye, CreditCard as Edit, Trash2, Star } from 'lucide-react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import InquiryModal from './InquiryModal';
