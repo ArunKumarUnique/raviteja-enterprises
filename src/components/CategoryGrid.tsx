@@ -27,11 +27,11 @@ const CategoryGrid: React.FC = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Discover our comprehensive collection of quality electronics and home essentials, 
             carefully selected to meet all your household needs
           </p>
@@ -46,15 +46,17 @@ const CategoryGrid: React.FC = () => {
               <Link
                 key={category.id}
                 to={`/category/${category.id}`}
-                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center group"
+                className="card-modern p-8 text-center group hover:bg-gradient-to-br hover:from-blue-50 hover:to-blue-100"
               >
-                <div className="flex justify-center mb-4">
-                  <div className="p-3 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
+                <div className="flex justify-center mb-6">
+                  <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl group-hover:scale-110 transition-all duration-300 group-hover:shadow-lg">
                     <IconComponent className="h-8 w-8 text-blue-600" />
                   </div>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">{category.name}</h3>
-                <p className="text-sm text-gray-500">{productCount} items</p>
+                <h3 className="font-semibold text-gray-900 mb-2 text-lg">{category.name}</h3>
+                <p className="text-sm text-gray-500 font-medium">
+                  {productCount} item{productCount !== 1 ? 's' : ''}
+                </p>
               </Link>
             );
           })}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Eye, Edit, Trash2 } from 'lucide-react';
+import { ShoppingCart, Eye, Edit, Trash2, Star } from 'lucide-react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
 import InquiryModal from './InquiryModal';
@@ -20,34 +20,44 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-        <div className="relative">
+      <div className="card-modern overflow-hidden group">
+        <div className="relative overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-48 object-cover"
+            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
           />
           {product.featured && (
-            <div className="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 text-xs rounded">
+            <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-1 text-xs font-medium rounded-full shadow-lg">
+              <Star className="w-3 h-3 inline mr-1" />
               Featured
             </div>
           )}
           {!product.inStock && (
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <span className="text-white font-semibold">Out of Stock</span>
+            <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
+              <span className="text-white font-semibold text-lg bg-red-600 px-4 py-2 rounded-full">
+                Out of Stock
+              </span>
             </div>
           )}
+          
+          {/* Hover overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
 
-        <div className="p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">{product.name}</h3>
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+            {product.name}
+          </h3>
+          <p className="text-gray-600 text-sm mb-4 line-clamp-2 leading-relaxed">
+            {product.description}
+          </p>
           
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-2xl font-bold text-blue-900">
+          <div className="flex items-center justify-between mb-6">
+            <span className="text-3xl font-bold text-blue-600">
               ₹{product.price.toLocaleString()}
             </span>
-            <span className={`px-2 py-1 text-xs rounded ${
+            <span className={`px-3 py-1 text-xs font-medium rounded-full ${
               product.inStock 
                 ? 'bg-green-100 text-green-800' 
                 : 'bg-red-100 text-red-800'
@@ -56,11 +66,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </span>
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             {product.inStock && (
               <button
                 onClick={() => setShowInquiryModal(true)}
-                className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                className="flex-1 btn-primary flex items-center justify-center"
               >
                 <ShoppingCart size={16} className="mr-2" />
                 Enquire Now
@@ -68,13 +78,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             )}
             
             {isAdmin && (
-              <div className="flex gap-1">
-                <button className="p-2 text-blue-600 hover:bg-blue-50 rounded">
+              <div className="flex gap-2">
+                <button className="p-3 text-blue-600 hover:bg-blue-50 rounded-xl transition-colors">
                   <Edit size={16} />
                 </button>
                 <button 
                   onClick={handleDelete}
-                  className="p-2 text-red-600 hover:bg-red-50 rounded"
+                  className="p-3 text-red-600 hover:bg-red-50 rounded-xl transition-colors"
                 >
                   <Trash2 size={16} />
                 </button>
