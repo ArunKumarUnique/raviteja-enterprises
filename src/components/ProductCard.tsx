@@ -53,10 +53,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {product.description}
           </p>
           
-          <div className="flex items-center justify-between mb-6">
-            <span className="text-3xl font-bold text-blue-600">
-              ₹{product.price.toLocaleString()}
-            </span>
+          <div className="flex items-center justify-end mb-6">
             <span className={`px-3 py-1 text-xs font-medium rounded-full ${
               product.inStock 
                 ? 'bg-green-100 text-green-800' 
@@ -70,7 +67,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {product.inStock && (
               <button
                 onClick={() => setShowInquiryModal(true)}
-                className="flex-1 btn-primary flex items-center justify-center"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
               >
                 <ShoppingCart size={16} className="mr-2" />
                 Enquire Now

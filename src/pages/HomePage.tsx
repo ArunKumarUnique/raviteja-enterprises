@@ -106,9 +106,9 @@ const HomePage: React.FC = () => {
                     <h3 className="font-semibold text-lg mb-2 text-gray-900">{product.name}</h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-blue-600">
-                        ₹{product.price.toLocaleString()}
-                      </span>
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        Enquire Now
+                      </button>
                       <Link
                         to={`/category/${product.category}`}
                         className="text-blue-600 hover:text-blue-800 text-sm font-medium"

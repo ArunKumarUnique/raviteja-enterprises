@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center group">
             <img 
-              src="/re-transparent.png" 
+              src="https://images.pexels.com/photos/1444416/pexels-photo-1444416.jpeg?auto=compress&cs=tinysrgb&w=100&h=100" 
               alt="Raviteja Enterprises Logo" 
               className="h-12 w-auto object-contain mr-4 transition-transform duration-300 group-hover:scale-105"
             />
