@@ -25,7 +25,7 @@ const AdminLogin: React.FC = () => {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <img 
-            src="https://images.pexels.com/photos/1444416/pexels-photo-1444416.jpeg?auto=compress&cs=tinysrgb&w=100&h=100" 
+            src="/re-transparent.png" 
             alt="Raviteja Enterprises Logo" 
             className="h-20 w-20 object-contain mx-auto mb-4"
           />

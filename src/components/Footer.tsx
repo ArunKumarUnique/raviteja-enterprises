@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center mb-6">
               <img 
-                src="https://images.pexels.com/photos/1444416/pexels-photo-1444416.jpeg?auto=compress&cs=tinysrgb&w=100&h=100" 
+                src="/re-transparent.png" 
                 alt="Raviteja Enterprises Logo" 
                 className="h-12 w-auto object-contain mr-4"
               />
