@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Shield, Truck, Headphones, Sparkles } from 'lucide-react';
+import { useState } from 'react';
 import CategoryGrid from '../components/CategoryGrid';
 import FeaturedProducts from '../components/FeaturedProducts';
+import EnquireModal from '../components/EnquireModal';
 import { useApp } from '../context/AppContext';
 
 const HomePage: React.FC = () => {
   const { searchQuery, filteredProducts } = useApp();
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   return (
     <div className="min-h-screen">
@@ -107,6 +110,7 @@ const HomePage: React.FC = () => {
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
                     <div className="flex items-center justify-between">
                       <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        onClick={() => setSelectedProduct(product)}
                         Enquire Now
                       </button>
                       <Link
@@ -238,6 +242,13 @@ const HomePage: React.FC = () => {
             </div>
           </section>
         </>
+      )}
+
+      {selectedProduct && (
+        <EnquireModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
       )}
     </div>
   );

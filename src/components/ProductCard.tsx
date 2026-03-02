@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { ShoppingCart, Eye, CreditCard as Edit, Trash2, Star } from 'lucide-react';
 import { Product } from '../types';
 import { useApp } from '../context/AppContext';
-import InquiryModal from './InquiryModal';
+import EnquireModal from './EnquireModal';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const [showInquiryModal, setShowInquiryModal] = useState(false);
+  const [showEnquireModal, setShowEnquireModal] = useState(false);
   const { isAdmin, deleteProduct } = useApp();
 
   const handleDelete = () => {
@@ -66,7 +66,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex gap-3">
             {product.inStock && (
               <button
-                onClick={() => setShowInquiryModal(true)}
+                onClick={() => setShowEnquireModal(true)}
                 className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center"
               >
                 <ShoppingCart size={16} className="mr-2" />
@@ -91,10 +91,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
 
-      {showInquiryModal && (
-        <InquiryModal
+      {showEnquireModal && (
+        <EnquireModal
           product={product}
-          onClose={() => setShowInquiryModal(false)}
+          onClose={() => setShowEnquireModal(false)}
         />
       )}
     </>
