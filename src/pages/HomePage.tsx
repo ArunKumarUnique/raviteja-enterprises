@@ -4,11 +4,12 @@ import { ArrowRight, Star, Shield, Truck, Headphones, Sparkles } from 'lucide-re
 import { useState } from 'react';
 import CategoryGrid from '../components/CategoryGrid';
 import FeaturedProducts from '../components/FeaturedProducts';
+import TrendingCarousel from '../components/TrendingCarousel';
 import EnquireModal from '../components/EnquireModal';
 import { useApp } from '../context/AppContext';
 
 const HomePage: React.FC = () => {
-  const { searchQuery, filteredProducts } = useApp();
+  const { searchQuery, filteredProducts, trendingProducts } = useApp();
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   return (
@@ -129,7 +130,12 @@ const HomePage: React.FC = () => {
       )}
 
       {/* Categories */}
-      {!searchQuery && <CategoryGrid />}
+      {!searchQuery && (
+        <>
+          <TrendingCarousel products={trendingProducts} />
+          <CategoryGrid />
+        </>
+      )}
 
       {/* Featured Products */}
       {!searchQuery && <FeaturedProducts />}

@@ -7,10 +7,12 @@ interface AppContextType {
   inquiries: Inquiry[];
   isAdmin: boolean;
   searchQuery: string;
+  trendingProducts: Product[];
   setSearchQuery: (query: string) => void;
   addProduct: (product: Omit<Product, 'id'>) => void;
   updateProduct: (id: number, product: Partial<Product>) => void;
   deleteProduct: (id: number) => void;
+  updateTrendingProducts: (productIds: number[]) => void;
   addInquiry: (inquiry: Omit<Inquiry, 'id' | 'createdAt'>) => void;
   login: (username: string, password: string) => boolean;
   logout: () => void;
@@ -97,6 +99,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [trendingProductIds, setTrendingProductIds] = useState<number[]>([1, 2, 5]); // Default trending products
 
   useEffect(() => {
     const adminStatus = localStorage.getItem('isAdmin');
@@ -104,6 +107,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setIsAdmin(true);
     }
   }, []);
+
+  // Get trending products based on selected IDs
+  const trendingProducts = products.filter(product => 
+    trendingProductIds.includes(product.id)
+  );
 
   const filteredProducts = products.filter(product =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -127,6 +135,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const deleteProduct = (id: number) => {
     setProducts(products.filter(product => product.id !== id));
+  };
+
+  const updateTrendingProducts = (productIds: number[]) => {
+    setTrendingProductIds(productIds);
   };
 
   const addInquiry = (inquiry: Omit<Inquiry, 'id' | 'createdAt'>) => {
@@ -160,10 +172,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       inquiries,
       isAdmin,
       searchQuery,
+      trendingProducts,
       setSearchQuery,
       addProduct,
       updateProduct,
       deleteProduct,
+      updateTrendingProducts,
       addInquiry,
       login,
       logout,
