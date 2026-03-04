@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, Users, Package, MessageSquare } from 'lucide-react';
+import { Plus, CreditCard as Edit, Trash2, Eye, Users, Package, MessageSquare } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Product } from '../types';
 
 const AdminDashboard: React.FC = () => {
-  const { products, inquiries, isAdmin, addProduct, deleteProduct, categories } = useApp();
+  const { products, inquiries, isAdmin, addProduct, deleteProduct, categories, trendingProducts, updateTrendingProducts } = useApp();
   const [activeTab, setActiveTab] = useState('products');
   const [showAddProduct, setShowAddProduct] = useState(false);
+  const [selectedTrendingIds, setSelectedTrendingIds] = useState<number[]>(
+    trendingProducts.map(p => p.id)
+  );
   const navigate = useNavigate();
 
   const [newProduct, setNewProduct] = useState({
@@ -45,6 +48,19 @@ const AdminDashboard: React.FC = () => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       deleteProduct(id);
     }
+  };
+
+  const handleUpdateTrending = () => {
+    updateTrendingProducts(selectedTrendingIds);
+    alert('Trending products updated successfully!');
+  };
+
+  const toggleTrendingProduct = (productId: number) => {
+    setSelectedTrendingIds(prev => 
+      prev.includes(productId)
+        ? prev.filter(id => id !== productId)
+        : [...prev, productId]
+    );
   };
 
   if (!isAdmin) {
@@ -116,6 +132,16 @@ const AdminDashboard: React.FC = () => {
               }`}
             >
               Inquiries
+            </button>
+            <button
+              onClick={() => setActiveTab('trending')}
+              className={`py-4 px-6 text-sm font-medium ${
+                activeTab === 'trending'
+                  ? 'border-b-2 border-blue-500 text-blue-600'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              Trending Products
             </button>
           </nav>
         </div>
@@ -213,6 +239,76 @@ const AdminDashboard: React.FC = () => {
             </div>
           )}
 
+          {activeTab === 'trending' && (
+            <div>
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl font-semibold">Manage Trending Products</h2>
+                <button
+                  onClick={handleUpdateTrending}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                >
+                  Update Trending
+                </button>
+              </div>
+
+              <p className="text-gray-600 mb-6">
+                Select products to display in the trending carousel on the homepage. 
+                Choose 3-5 products for the best experience.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products.map(product => (
+                  <div 
+                    key={product.id} 
+                    className={`border rounded-lg p-4 cursor-pointer transition-all ${
+                      selectedTrendingIds.includes(product.id)
+                        ? 'border-blue-500 bg-blue-50 shadow-md'
+                        : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                    onClick={() => toggleTrendingProduct(product.id)}
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-32 object-cover rounded-lg mb-3"
+                    />
+                    <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
+                    <p className="text-gray-600 text-sm mb-3 line-clamp-2">
+                      {product.description}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className={`text-sm font-medium ${
+                        selectedTrendingIds.includes(product.id)
+                          ? 'text-blue-600'
+                          : 'text-gray-500'
+                      }`}>
+                        {selectedTrendingIds.includes(product.id) ? '✓ Selected' : 'Click to select'}
+                      </span>
+                      {product.featured && (
+                        <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
+                          Featured
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 p-4 bg-gray-50 rounded-lg">
+                <h3 className="font-semibold mb-2">Currently Selected ({selectedTrendingIds.length}):</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedTrendingIds.map(id => {
+                    const product = products.find(p => p.id === id);
+                    return product ? (
+                      <span key={id} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                        {product.name}
+                      </span>
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
           {activeTab === 'inquiries' && (
             <div>
               <h2 className="text-xl font-semibold mb-6">Customer Inquiries</h2>
