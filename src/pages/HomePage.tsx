@@ -6,6 +6,8 @@ import CategoryGrid from '../components/CategoryGrid';
 import FeaturedProducts from '../components/FeaturedProducts';
 import TrendingCarousel from '../components/TrendingCarousel';
 import EnquireModal from '../components/EnquireModal';
+import ServicesSection from '../components/ServicesSection';
+import DeliverySection from '../components/DeliverySection';
 import { useApp } from '../context/AppContext';
 
 const HomePage: React.FC = () => {
@@ -139,6 +141,12 @@ const HomePage: React.FC = () => {
 
       {/* Featured Products */}
       {!searchQuery && <FeaturedProducts />}
+
+      {/* Services Section */}
+      {!searchQuery && <ServicesSection />}
+
+      {/* Delivery Section */}
+      {!searchQuery && <DeliverySection />}
 
       {/* Features Section */}
       {!searchQuery && (
