@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Fan, Wind, Snowflake, Blender, Wrench, Star } from 'lucide-react';
+import { Zap, Fan, Wind, Snowflake, Blend as Blender, Wrench, Star } from 'lucide-react';
 
 const ServicesSection: React.FC = () => {
   const services = [
