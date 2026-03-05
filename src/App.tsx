@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import CategoryPage from './pages/CategoryPage';
+import OwnerPage from './pages/OwnerPage';
+import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/category/:categoryId" element={<CategoryPage />} />
+              <Route path="/owner" element={<OwnerPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin/dashboard" element={<AdminDashboard />} />
             </Routes>
