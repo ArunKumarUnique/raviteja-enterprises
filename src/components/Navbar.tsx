@@ -52,11 +52,9 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center group">
-            <img 
-              src="/re-transparent.png" 
-              alt="Raviteja Enterprises Logo" 
-              className="h-12 w-auto object-contain mr-4 transition-transform duration-300 group-hover:scale-105"
-            />
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-3 rounded-2xl mr-4 transition-transform duration-300 group-hover:scale-105">
+              <span className="text-2xl font-bold">RE</span>
+            </div>
             <div className="hidden md:block">
               <div className="text-2xl font-bold text-gradient">
                 Raviteja Enterprises
